@@ -1,0 +1,19 @@
+{
+  "name": "mhta-backend-api",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Jędrzej Lewandowski <jedrzejblew@gmail.com>",
+  "homepage": "",
+  "license": "UNLICENSED",
+  "main": "lib/mhta-backend-api.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  }
+}
