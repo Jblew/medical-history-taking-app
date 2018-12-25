@@ -16,7 +16,7 @@ const webpackConfig = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/dist/',
-    filename: 'wise-hub.js'
+    filename: 'mhta.js'
   },
   mode: (process.env.NODE_ENV === 'production' ? 'production' : 'development'),
   module: {
