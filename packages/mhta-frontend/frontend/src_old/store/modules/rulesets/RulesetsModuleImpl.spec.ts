@@ -1,6 +1,0 @@
-
-import "mocha";
-
-describe("", () => {
-
-});

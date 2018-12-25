@@ -7,10 +7,7 @@
 - Badanie lekarskie
   - Przeprowadzone u *Pacjenta*
   - Ma *datę i czas zatwierdzenia*
-  - Jest przeprowadzone wg *schematu badania*, co oznacza, że ma statycznie zdefiniowane (wg schematu) *sekcje*, które mają *podsekcje*, które mają *aplety*, które produkują *rekordy*
-- Schemat badania
-  - Zawiera ściśle zdefiniowane *sekcje* z wybranymi *podsekcjami* (a nawet wybranimi *apletami*)
-  - Możliwy jest "schemat niestandardowy", który umożliwia wybieranie *sekcji* i ich *podsekcji* z listy
+  - Przynależą do niego rekordy, które są wyświetlane i generowane przez aplety, a przynależą do sekcji i podsekcji
 - Sekcja z podsekcjami
   - Ma zdefiniowane ściśle *podsekcje*, które nie są odrębnymi jednostkami, tylko logicznym uporządkowaniem apletów
   - Ma statycznie zdefiniowane *podsekcje* z *apletami*

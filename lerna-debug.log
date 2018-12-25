@@ -1,23 +1,6 @@
-0 silly argv { _: [ 'create' ],
-0 silly argv   lernaVersion: '3.8.0',
-0 silly argv   '$0': 'lerna',
-0 silly argv   name: 'mhta-model' }
+0 silly argv { _: [ 'bootstrap' ], lernaVersion: '3.8.0', '$0': 'lerna' }
 1 notice cli v3.8.0
 2 verbose rootPath /Users/teofil/git-repository/medical-history-taking-app
-3 warn ENOREMOTE No git remote found, skipping repository property
-4 error TypeError: Cannot read property 'trim' of undefined
-4 error     at module.exports (/Users/teofil/.nvm/versions/node/v10.12.0/lib/node_modules/lerna/node_modules/validate-npm-package-license/index.js:60:20)
-4 error     at exports.license.yes.prompt.data (/Users/teofil/.nvm/versions/node/v10.12.0/lib/node_modules/lerna/node_modules/@lerna/create/lib/lerna-module-data.js:140:19)
-4 error     at PromZard.<anonymous> (/Users/teofil/.nvm/versions/node/v10.12.0/lib/node_modules/lerna/node_modules/promzard/promzard.js:226:19)
-4 error     at onError (/Users/teofil/.nvm/versions/node/v10.12.0/lib/node_modules/lerna/node_modules/read/lib/read.js:94:12)
-4 error     at Interface.<anonymous> (/Users/teofil/.nvm/versions/node/v10.12.0/lib/node_modules/lerna/node_modules/read/lib/read.js:66:5)
-4 error     at Interface.emit (events.js:182:13)
-4 error     at Interface._ttyWrite (readline.js:783:16)
-4 error     at ReadStream.onkeypress (readline.js:168:10)
-4 error     at ReadStream.emit (events.js:182:13)
-4 error     at emitKeys (internal/readline.js:424:14)
-4 error     at emitKeys.next (<anonymous>)
-4 error     at ReadStream.onData (readline.js:1022:36)
-4 error     at ReadStream.emit (events.js:182:13)
-4 error     at addChunk (_stream_readable.js:283:12)
-4 error     at readableAddChunk (_stream_readable.js:264:11)
+3 error JSONError: Unexpected token } in JSON at position 1175 while parsing near '...k-cli": "^3.1.2",  }}' in packages/mhta-frontend/package.json
+3 error     at module.exports (/Users/teofil/git-repository/medical-history-taking-app/node_modules/parse-json/index.js:26:19)
+3 error     at parse (/Users/teofil/git-repository/medical-history-taking-app/node_modules/load-json-file/index.js:8:29)

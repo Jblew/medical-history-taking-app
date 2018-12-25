@@ -3,17 +3,23 @@
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "Jędrzej Lewandowski <jedrzejblew@gmail.com>",
-  "homepage": "",
   "license": "UNLICENSED",
   "main": "lib/mhta-model.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
   },
-  "files": [
-    "lib"
-  ],
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "tsc": "tsc --build",
+    "build": "npm run tslint && npm run tsc"
+  },
+  "dependencies": {
+    "ow": "^0.8.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/uuid": "^3.4.4"
   }
 }

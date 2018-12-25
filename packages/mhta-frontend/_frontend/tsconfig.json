@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "outDir": "dist",
+        "sourceMap": true,
+        "strict": true,
+        "module": "es6",
+        "moduleResolution": "node",
+        "target": "es6",
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "allowJs": true,
+        "baseUrl": "src",
+        "paths": {
+            "@api": [ "api/*" ],
+            "@components": [ "components/*" ],
+            "@model": [ "model/*" ],
+            "@store": [ "store/*" ],
+            "@struct": [ "struct/*" ],
+            "@util": [ "util/*" ],
+        }
+    },
+    "include": [
+        "./src/**/*"
+    ],
+    "exclude": [
+        "src/**/*.spec.ts"
+    ]
+}
