@@ -3,8 +3,11 @@ import ow from "ow";
 
 import { Serializable } from "../util/serialization/Serializable";
 import { Serializer } from "../util/serialization/Serializer";
+import { Serialized } from "util/serialization/Serialized";
 
 export class Patient implements Serializable {
+    private static ENTITY = "patient";
+
     private id: string;
     private name: string;
 
@@ -24,11 +27,19 @@ export class Patient implements Serializable {
         return this.name;
     }
 
-    public getSerialized(): Patient.IPatientV1 {
+    public serialize(): Patient.IPatientV1 & Serialized {
         return {
+            __e: Patient.ENTITY,
+            __v: "1",
             id: this.id,
             name: this.name
         };
+    }
+
+    public static deserialize(serializedObj: Patient.IPatientV1 & Serialized): Patient {
+        ow(serializedObj.__e, ow.string.equals(Patient.ENTITY).label("serializedObj.__e"));
+        ow(serializedObj.__v, ow.string.equals("1").label("serializedObj.__v"));
+        return new Patient(serializedObj);
     }
 }
 
@@ -37,17 +48,4 @@ export namespace Patient {
         id: string;
         name: string;
     }
-
-    export const serializer = new Serializer<Patient>("patient", [
-        {
-            versionId: "1",
-            fromObject(obj: object): Patient {
-                const patientV1: IPatientV1 = obj as Patient.IPatientV1;
-                return new Patient(patientV1);
-            },
-            toObject(obj: Patient): object {
-                return obj.getSerialized();
-            }
-        }
-    ]);
 }

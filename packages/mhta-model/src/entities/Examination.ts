@@ -2,10 +2,12 @@ import * as uuid from "uuid";
 import ow from "ow";
 
 import { Serializable } from "../util/serialization/Serializable";
-import { Serializer } from "../util/serialization/Serializer";
 import { Record } from "./Record";
+import { Serialized } from "util/serialization/Serialized";
 
 export class Examination implements Serializable {
+    private static ENTITY = "examination";
+
     private id: string;
     private patientId: string;
     private timestamp: number; // ms
@@ -15,7 +17,7 @@ export class Examination implements Serializable {
         this.id = examinationData.id;
         this.patientId = examinationData.patientId;
         this.timestamp = examinationData.timestamp;
-        this.records = examinationData.records;
+        this.records = examinationData.records.map(serializedRecord => Record.deserialize(serializedRecord));
 
         ow(this.id, ow.string.nonEmpty.label("Examination.id"));
         ow(this.patientId, ow.string.nonEmpty.label("Examination.patientId"));
@@ -35,13 +37,21 @@ export class Examination implements Serializable {
         return new Date(this.timestamp);
     }
 
-    public getSerialized(): Examination.IExaminationV1 {
+    public serialize(): Examination.IExaminationV1 & Serialized {
         return {
+            __e: Examination.ENTITY,
+            __v: "1",
             id: this.id,
             patientId: this.patientId,
             timestamp: this.timestamp,
-            records: this.records
+            records: this.records.map(record => record.serialize())
         };
+    }
+
+    public static deserialize(serializedObj: Examination.IExaminationV1 & Serialized): Examination {
+        ow(serializedObj.__e, ow.string.equals(Examination.ENTITY).label("serializedObj.__e"));
+        ow(serializedObj.__v, ow.string.equals("1").label("serializedObj.__v"));
+        return new Examination(serializedObj);
     }
 }
 
@@ -50,19 +60,6 @@ export namespace Examination {
         id: string;
         patientId: string;
         timestamp: number;
-        records: Record [];
+        records: (Record.IRecordV1 & Serialized) [];
     }
-
-    export const serializer = new Serializer<Examination>("examination", [
-        {
-            versionId: "1",
-            fromObject(obj: object): Examination {
-                const examinationV1: IExaminationV1 = obj as Examination.IExaminationV1;
-                return new Examination(examinationV1);
-            },
-            toObject(obj: Examination): object {
-                return obj.getSerialized();
-            }
-        }
-    ]);
 }

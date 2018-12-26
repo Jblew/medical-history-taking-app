@@ -3,8 +3,11 @@ import ow from "ow";
 
 import { Serializable } from "../util/serialization/Serializable";
 import { Serializer } from "../util/serialization/Serializer";
+import { Serialized } from "util/serialization/Serialized";
 
 export class Record implements Serializable {
+    private static ENTITY = "record";
+
     private id: string;
     private examinationId: string;
     private appletName: string;
@@ -31,12 +34,20 @@ export class Record implements Serializable {
         return new Date(this.appletName);
     }
 
-    public getSerialized(): Record.IRecordV1 {
+    public serialize(): Record.IRecordV1 & Serialized {
         return {
+            __e: Record.ENTITY,
+            __v: "1",
             id: this.id,
             examinationId: this.examinationId,
             appletName: this.appletName
         };
+    }
+
+    public static deserialize(serializedObj: Record.IRecordV1 & Serialized): Record {
+        ow(serializedObj.__e, ow.string.equals(Record.ENTITY).label("serializedObj.__e"));
+        ow(serializedObj.__v, ow.string.equals("1").label("serializedObj.__v"));
+        return new Record(serializedObj);
     }
 }
 
@@ -46,17 +57,4 @@ export namespace Record {
         examinationId: string;
         appletName: string;
     }
-
-    export const serializer = new Serializer<Record>("record", [
-        {
-            versionId: "1",
-            fromObject(obj: object): Record {
-                const recordV1: IRecordV1 = obj as Record.IRecordV1;
-                return new Record(recordV1);
-            },
-            toObject(obj: Record): object {
-                return obj.getSerialized();
-            }
-        }
-    ]);
 }
