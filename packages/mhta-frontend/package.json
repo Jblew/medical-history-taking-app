@@ -1,6 +1,6 @@
 {
   "name": "mhta-frontend",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -11,13 +11,13 @@
     "prepublish": "npm run lint && npm run build"
   },
   "dependencies": {
+    "mhta-applets-visual": "^0.2.0",
+    "mhta-medicalstructure": "^0.2.0",
+    "mhta-model": "^0.2.0",
+    "mhta-visual-components": "^0.2.0",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1",
-    "mhta-model": "^0.1.0",
-    "mhta-medicalstructure": "^0.1.0",
-    "mhta-visual-components": "^0.1.0",
-    "mhta-applets-visual": "^0.1.0"
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "@types/chai": "^4.1.0",
