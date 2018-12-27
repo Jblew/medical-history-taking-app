@@ -1,4 +1,4 @@
-# mhta-applets
+# hello-world
 
 ## Project setup
 ```

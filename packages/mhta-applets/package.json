@@ -1,26 +1,39 @@
 {
   "name": "mhta-applets",
-  "version": "0.0.0",
-  "description": "> TODO: description",
-  "author": "Jędrzej Lewandowski <jedrzejblew@gmail.com>",
-  "homepage": "https://github.com/Jblew/medical-history-taking-app#readme",
-  "license": "UNLICENSED",
-  "main": "lib/mhta-applets.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Jblew/medical-history-taking-app.git"
-  },
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "serve": "vue-cli-service serve",
+    "build-vue-lib": "vue-cli-service build --target lib --name mhta-applets src/main.ts",
+    "build-ts": "tsc -b tsconfig.lib.json",
+    "build": "npm run build-vue-lib && npm run build-ts",
+    "lint": "vue-cli-service lint",
+    "prepublish": "npm run lint && npm run build"
   },
-  "bugs": {
-    "url": "https://github.com/Jblew/medical-history-taking-app/issues"
-  }
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "mhta-model": "^0.1.0",
+    "ow": "^0.8.0",
+    "uuid": "^3.3.2",
+    "vue": "^2.5.17"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.119",
+    "@vue/cli-plugin-typescript": "^3.2.0",
+    "@vue/cli-service": "^3.2.0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "typescript": "^3.0.0",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
 }

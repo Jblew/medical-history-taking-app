@@ -1,6 +1,6 @@
 {
   "name": "mhta-model",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "> TODO: description",
   "author": "Jędrzej Lewandowski <jedrzejblew@gmail.com>",
   "license": "UNLICENSED",
@@ -13,7 +13,8 @@
     "test": "echo \"Error: run tests from root\" && exit 1",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
     "tsc": "tsc --build",
-    "build": "npm run tslint && npm run tsc"
+    "build": "npm run tslint && npm run tsc",
+    "prepublish": "npm run build"
   },
   "dependencies": {
     "ow": "^0.8.0",
