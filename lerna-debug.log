@@ -1,6 +1,0 @@
-0 silly argv { _: [ 'bootstrap' ], lernaVersion: '3.8.0', '$0': 'lerna' }
-1 notice cli v3.8.0
-2 verbose rootPath /Users/teofil/git-repository/medical-history-taking-app
-3 error JSONError: Unexpected token } in JSON at position 1175 while parsing near '...k-cli": "^3.1.2",  }}' in packages/mhta-frontend/package.json
-3 error     at module.exports (/Users/teofil/git-repository/medical-history-taking-app/node_modules/parse-json/index.js:26:19)
-3 error     at parse (/Users/teofil/git-repository/medical-history-taking-app/node_modules/load-json-file/index.js:8:29)
