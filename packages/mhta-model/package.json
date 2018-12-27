@@ -1,6 +1,7 @@
 {
   "name": "mhta-model",
   "version": "0.1.0",
+  "private": true,
   "description": "> TODO: description",
   "author": "Jędrzej Lewandowski <jedrzejblew@gmail.com>",
   "license": "UNLICENSED",

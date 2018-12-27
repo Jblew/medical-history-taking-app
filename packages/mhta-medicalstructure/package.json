@@ -1,6 +1,7 @@
 {
   "name": "mhta-medicalstructure",
   "version": "0.1.0",
+  "private": true,
   "description": "> TODO: description",
   "author": "Jędrzej Lewandowski <jedrzejblew@gmail.com>",
   "homepage": "https://github.com/Jblew/medical-history-taking-app#readme",
