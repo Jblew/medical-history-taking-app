@@ -1,0 +1,51 @@
+#font: Lato, Calibri
+
+[<label>MHTA modules
+| Lerna + TS project refs
+]
+
+
+[mhta-model
+|Data model for MHTA
+|- Basic and generic entities
++-- Patient
++-- Clinical examination
++-- Section
++-- Subsection
++-- Applet
++-- Record
+- Serialization framework
+- Common utilities
+]
+
+
+[mhta-medicalstructure
+|Medical data representation
+|- applets data model
+- applets logics
+- applets examination summary text generator
+- sections, subsections and their applets
+- extending generic applets (may have common graphics)
+]-->[mhta-model]
+
+
+[mhta-visual-components
+|Common visual components
+for Vue
+]
+
+
+[mhta-applets-visual
+|Visual components for applets
+]
+[mhta-applets-visual]-->[mhta-model]
+[mhta-applets-visual]-->[mhta-medicalstructure]
+[mhta-applets-visual]-->[mhta-visual-components]
+
+
+[mhta-frontend
+|Visual layer
+]-->[mhta-model]
+[mhta-frontend]-->[mhta-medicalstructure]
+[mhta-frontend]-->[mhta-applets-visual]
+[mhta-frontend]-->[mhta-visual-components]

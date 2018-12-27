@@ -1,11 +1,10 @@
 {
-  "name": "mhta-medicalstructure",
+  "name": "mhta-visual-components",
   "version": "0.1.0",
   "description": "> TODO: description",
   "author": "Jędrzej Lewandowski <jedrzejblew@gmail.com>",
-  "homepage": "https://github.com/Jblew/medical-history-taking-app#readme",
   "license": "UNLICENSED",
-  "main": "lib/mhta-medicalstructure.js",
+  "main": "lib/mhta-visual-components.js",
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
@@ -14,7 +13,7 @@
     "prepublish": "npm run build"
   },
   "dependencies": {
-    "mhta-model": "^0.1.0"
+    "ow": "^0.8.0"
   },
   "repository": {
     "type": "git",

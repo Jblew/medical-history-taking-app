@@ -5,14 +5,10 @@
   "author": "Jędrzej Lewandowski <jedrzejblew@gmail.com>",
   "license": "UNLICENSED",
   "main": "lib/mhta-model.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
-    "tsc": "tsc --build",
+    "tsc": "tsc -b",
     "build": "npm run tslint && npm run tsc",
     "prepublish": "npm run build"
   },

@@ -3,7 +3,7 @@ import ow from "ow";
 
 import { Serializable } from "../util/serialization/Serializable";
 import { Record } from "./Record";
-import { Serialized } from "util/serialization/Serialized";
+import { Serialized } from "../util/serialization/Serialized";
 
 export class Examination implements Serializable {
     private static ENTITY = "examination";
