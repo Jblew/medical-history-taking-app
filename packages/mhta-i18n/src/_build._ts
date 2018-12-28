@@ -1,0 +1,39 @@
+import * as fs from "fs";
+import * as path from "path";
+import * as yaml from "js-yaml";
+
+let locales: [
+  string,
+  {
+    [any: string]: any;
+  }
+][] = [];
+
+const localesDir = __dirname + "/locales";
+const localeFiles: string[] = fs
+  .readdirSync(localesDir)
+  .map(fName => path.resolve(localesDir, fName));
+
+locales = localeFiles
+  .filter(fPath => path.extname(fPath) === ".yml")
+  .map(
+    fPath =>
+      [
+        path.basename(fPath, ".yml"),
+        yaml.safeLoad(fs.readFileSync(fPath, "UTF-8"))
+      ] as [string, { [any: string]: any }]
+  );
+
+const localesObject: any = {};
+locales.forEach(
+  (localeTuple: [string, any]) =>
+    (localesObject[localeTuple[0]] = localeTuple[1])
+);
+const resultJs = `export default ${JSON.stringify(localesObject, undefined, 4)};
+`;
+
+console.log(resultJs);
+
+const outDir = path.resolve(__dirname, "..", "lib");
+fs.writeFileSync(path.resolve(outDir, "main.js"), resultJs);
+fs.writeFileSync(path.resolve(outDir, "main.d.ts"), resultJs);

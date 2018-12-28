@@ -1,0 +1,17 @@
+{
+    "name": "mhta-i18n",
+    "version": "0.2.0",
+    "private": true,
+    "description": "> TODO: description",
+    "author": "Jędrzej Lewandowski <jedrzejblew@gmail.com>",
+    "license": "UNLICENSED",
+    "main": "lib/mhta-i18n.js",
+    "scripts": {
+        "test": "echo \"Error: run tests from root\" && exit 1",
+        "tslint": "tslint -c tslint.json -p tsconfig.json",
+        "tsc": "tsc -b",
+        "build": "rm -rf lib && npm run tslint && npm run tsc",
+        "prepublish": "npm run build"
+    },
+    "devDependencies": {}
+}
