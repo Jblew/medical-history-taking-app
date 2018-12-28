@@ -10,7 +10,8 @@
         ],
         "indent": [
             true,
-            "spaces"
+            "spaces",
+            4
         ],
         "one-line": [
             true,
@@ -56,7 +57,7 @@
         ],
         "no-internal-module": true,
         "no-trailing-whitespace": true,
-        "no-null-keyword": true,
+        "no-null-keyword": false,
         "prefer-const": true,
         "jsdoc-format": true
     }

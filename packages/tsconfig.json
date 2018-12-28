@@ -1,10 +1,19 @@
 {
     "files": [],
-    "references": [
-        { "path": "mhta-model" },
-        { "path": "mhta-medicalstructure" },
-        { "path": "mhta-applets-visual" },
-        { "path": "mhta-visual-components" },
-        { "path": "mhta-frontend" }
+    "references": [{
+            "path": "mhta-model"
+        },
+        {
+            "path": "mhta-medicalstructure"
+        },
+        {
+            "path": "mhta-applets-visual"
+        },
+        {
+            "path": "mhta-visual-components"
+        },
+        {
+            "path": "mhta-frontend"
+        }
     ]
 }

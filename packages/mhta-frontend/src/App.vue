@@ -1,29 +1,64 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app id="inspire app" dark>
+    <v-navigation-drawer v-model="drawer" clipped fixed app>
+      <v-list dense>
+        <material-drawer-tile-router
+          to="/"
+          icon="dashboard"
+        >{{ $t("ui.navigation.dashboard") | capitalize }}</material-drawer-tile-router>
+        <material-drawer-tile-router
+          to="/patients"
+          icon="list"
+        >{{ $t("ui.navigation.patients") | capitalize }}</material-drawer-tile-router>
+        <material-drawer-tile-router
+          to="/examination"
+          icon="assignment"
+        >{{ $t("ui.navigation.examination") | capitalize }}</material-drawer-tile-router>
+        <material-drawer-tile-router
+          to="/about"
+          icon="copyright"
+        >{{ $t("ui.navigation.about") | capitalize }}</material-drawer-tile-router>
+      </v-list>
+    </v-navigation-drawer>
+    <v-toolbar app fixed clipped-left>
+      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-toolbar-title>{{ appTitle }}</v-toolbar-title>
+    </v-toolbar>
+    <v-content>
+      <v-container fluid fill-height>
+        <v-layout justify-center align-center>
+          <v-flex shrink>
+            <router-view/>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-content>
+    <v-footer app fixed>
+      <span>&copy; 2018 - {{ year }} by {{ author }}</span>
+    </v-footer>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+<script lang="ts">
+import Vue from "vue";
+import { config } from "./config";
+
+export default Vue.extend({
+  props: [],
+  data() {
+    return {
+      drawer: null,
+      author: config.author,
+      appTitle: config.appTitle
+    };
+  },
+  methods: {},
+  computed: {
+    year: () => new Date().getFullYear()
+  },
+  components: {}
+});
+</script>
+
+<style lang="scss" scoped>
 </style>
