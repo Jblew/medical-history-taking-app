@@ -4,11 +4,9 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build-vue-lib": "vue-cli-service build --target lib --name mhta-applets src/main.ts",
-    "build-ts": "tsc -b tsconfig.lib.json",
-    "build": "npm run build-vue-lib && npm run build-ts",
+    "build-vue-lib": "vue-cli-service build --target lib --name mhta-applets-visual src/main.ts",
     "lint": "vue-cli-service lint",
-    "prepublish": "npm run lint && npm run build"
+    "prepublish": "npm run lint && npm run build-vue-lib"
   },
   "dependencies": {
     "lodash": "^4.17.11",
