@@ -6,7 +6,7 @@ export const pl: LangTypeModel = {
       dashboard: "panel",
       about: "informacje",
       patients: "pacjenci",
-      examinations: "badania"
+      examination: "badania"
     }
   }
 };

@@ -4,7 +4,7 @@ export interface LangTypeModel {
       dashboard: string;
       about: string;
       patients: string;
-      examinations: string;
+      examination: string;
     };
   };
 }

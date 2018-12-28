@@ -6,7 +6,7 @@ export const en: LangTypeModel = {
       dashboard: "dashboard",
       about: "about",
       patients: "patients",
-      examinations: "examinations"
+      examination: "examination"
     }
   }
 };
