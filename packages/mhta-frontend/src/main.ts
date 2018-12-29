@@ -3,11 +3,7 @@ import Vuetify from "vuetify";
 import WebFontLoader from "webfontloader";
 import App from "./App.vue";
 import router from "./router";
-import i18n from "./i18n";
 import store from "./store";
-
-import "./components/common/common_components";
-import "./filters";
 
 Vue.config.productionTip = false;
 
@@ -16,10 +12,14 @@ Vue.use(Vuetify);
 import "vuetify/dist/vuetify.min.css";
 import "material-design-icons-iconfont/dist/material-design-icons.css"; // Ensure you are using css-loader
 
+// Mixins
+import "./components/common/common_components";
+import "./filters";
+import "./i18n";
+
 new Vue({
   router,
   store,
-  i18n,
   render: h => h(App),
   mounted() {
     WebFontLoader.load({

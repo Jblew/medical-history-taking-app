@@ -2,22 +2,13 @@
   <v-app id="inspire app" dark>
     <v-navigation-drawer v-model="drawer" clipped fixed app>
       <v-list dense>
-        <material-drawer-tile-router
-          to="/"
-          icon="dashboard"
-        >{{ $t("ui.navigation.dashboard") | capitalize }}</material-drawer-tile-router>
-        <material-drawer-tile-router
-          to="/patients"
-          icon="list"
-        >{{ $t("ui.navigation.patients") | capitalize }}</material-drawer-tile-router>
+        <material-drawer-tile-router to="/" icon="dashboard">{{ text.dashboard | capitalize }}</material-drawer-tile-router>
+        <material-drawer-tile-router to="/patients" icon="list">{{ text.patients | capitalize }}</material-drawer-tile-router>
         <material-drawer-tile-router
           to="/examination"
           icon="assignment"
-        >{{ $t("ui.navigation.examination") | capitalize }}</material-drawer-tile-router>
-        <material-drawer-tile-router
-          to="/about"
-          icon="copyright"
-        >{{ $t("ui.navigation.about") | capitalize }}</material-drawer-tile-router>
+        >{{ text.examination | capitalize }}</material-drawer-tile-router>
+        <material-drawer-tile-router to="/about" icon="copyright">{{ text.about | capitalize }}</material-drawer-tile-router>
       </v-list>
     </v-navigation-drawer>
     <v-toolbar app fixed clipped-left>
@@ -40,13 +31,21 @@
 </template>
 
 <script lang="ts">
+// @ts-check
+
 import Vue from "vue";
-import { config } from "./config";
+import { config, i18n } from "./global";
 
 export default Vue.extend({
   props: [],
   data() {
     return {
+      text: {
+        dashboard: i18n.localize(l => l.ui.navigation.dashboard),
+        patients: i18n.localize(l => l.ui.navigation.patients),
+        examination: i18n.localize(l => l.ui.navigation.examination),
+        about: i18n.localize(l => l.ui.navigation.about)
+      },
       drawer: null,
       author: config.author,
       appTitle: config.appTitle
