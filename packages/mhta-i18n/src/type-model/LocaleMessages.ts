@@ -1,4 +1,4 @@
-export interface LangTypeModel {
+export interface LocaleMessages {
   ui: {
     navigation: {
       dashboard: string;
