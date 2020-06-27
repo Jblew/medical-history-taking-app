@@ -5,56 +5,79 @@ import { Serializable } from "../util/serialization/Serializable";
 import { Serializer } from "../util/serialization/Serializer";
 import { Serialized } from "../util/serialization/Serialized";
 
-export class Record implements Serializable {
-    private static ENTITY = "record";
+/**
+ * A pojo for Record that keeps the data integrity
+ */
+export class RecordPOJO<T_DESCRIPTOR extends object, T_DATA extends object> {
+  protected id: string;
+  protected examinationId: string;
+  protected descriptor: T_DESCRIPTOR;
+  protected data: T_DATA;
 
-    private id: string;
-    private examinationId: string;
-    private appletName: string;
+  protected constructor(recordData: Record.IRecordV1<T_DESCRIPTOR, T_DATA>) {
+    this.id = recordData.id;
+    this.examinationId = recordData.examinationId;
+    this.descriptor = recordData.descriptor;
+    this.data = recordData.data;
 
-    public constructor(recordData: Record.IRecordV1) {
-        this.id = recordData.id;
-        this.examinationId = recordData.examinationId;
-        this.appletName = recordData.appletName;
+    ow(this.id, ow.string.nonEmpty.label("RecordPOJO.id"));
+    ow(this.examinationId, ow.string.nonEmpty.label("RecordPOJO.examinationId"));
+    ow(this.descriptor, ow.object.label("RecordPOJO.descriptor"));
+    ow(this.data, ow.object.label("RecordPOJO.data"));
+  }
 
-        ow(this.id, ow.string.nonEmpty.label("Record.id"));
-        ow(this.examinationId, ow.string.nonEmpty.label("Record.examinationId"));
-        ow(this.appletName, ow.string.nonEmpty.label("Record.appletName"));
-    }
+  public getId(): string {
+    return this.id;
+  }
 
-    public getId(): string {
-        return this.id;
-    }
+  public getExaminationId(): string {
+    return this.examinationId;
+  }
 
-    public getExaminationId(): string {
-        return this.examinationId;
-    }
+  public getDescriptor(): T_DESCRIPTOR {
+    return this.descriptor;
+  }
 
-    public getAppletName(): Date {
-        return new Date(this.appletName);
-    }
+  public getData(): T_DATA {
+    return this.data;
+  }
+}
 
-    public serialize(): Record.IRecordV1 & Serialized {
-        return {
-            __e: Record.ENTITY,
-            __v: "1",
-            id: this.id,
-            examinationId: this.examinationId,
-            appletName: this.appletName
-        };
-    }
+/**
+ * A serializable (versioned) extension of RecordPOJO
+ */
+export class Record<T_DESCRIPTOR extends object, T_DATA extends object> extends RecordPOJO<T_DESCRIPTOR, T_DATA> {
+  private static ENTITY = "record";
 
-    public static deserialize(serializedObj: Record.IRecordV1 & Serialized): Record {
-        ow(serializedObj.__e, ow.string.equals(Record.ENTITY).label("serializedObj.__e"));
-        ow(serializedObj.__v, ow.string.equals("1").label("serializedObj.__v"));
-        return new Record(serializedObj);
-    }
+  public constructor(params: Record.IRecordV1<T_DESCRIPTOR, T_DATA>) {
+    super(params);
+  }
+
+  public serialize(): Record.IRecordV1<T_DESCRIPTOR, T_DATA> & Serialized {
+    return {
+      __e: Record.ENTITY,
+      __v: "1",
+      id: this.id,
+      examinationId: this.examinationId,
+      descriptor: this.descriptor,
+      data: this.data
+    };
+  }
+
+  public static deserialize<T_DESCRIPTOR extends object, T_DATA extends object>(
+    serializedObj: Record.IRecordV1<T_DESCRIPTOR, T_DATA> & Serialized
+  ): Record<T_DESCRIPTOR, T_DATA> {
+    ow(serializedObj.__e, ow.string.equals(Record.ENTITY).label("serializedObj.__e"));
+    ow(serializedObj.__v, ow.string.equals("1").label("serializedObj.__v"));
+    return new Record(serializedObj);
+  }
 }
 
 export namespace Record {
-    export interface IRecordV1 {
-        id: string;
-        examinationId: string;
-        appletName: string;
-    }
+  export interface IRecordV1<T_DESCRIPTOR extends object, T_DATA extends object> {
+    id: string;
+    examinationId: string;
+    descriptor: T_DESCRIPTOR;
+    data: T_DATA;
+  }
 }
